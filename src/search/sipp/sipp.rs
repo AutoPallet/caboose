@@ -262,10 +262,10 @@ where
         {
             let successor_state = self
                 .transition_system
-                .transition(&current.state.internal_state, action);
+                .transition(&current.state.internal_state, &action);
             let transition_cost = self
                 .transition_system
-                .transition_cost(&current.state.internal_state, action);
+                .transition_cost(&current.state.internal_state, &action);
 
             let heuristic = config.heuristic.get_heuristic(&successor_state);
             if heuristic.is_none() {
@@ -395,7 +395,7 @@ where
                 if improved {
                     self.parent.insert(
                         successor.state.clone(),
-                        (Action::new(*action, transition_cost), current.state.clone()),
+                        (Action::new(action, transition_cost), current.state.clone()),
                     );
                     self.queue.push(Reverse(successor))
                 }

@@ -90,8 +90,8 @@ impl State for SimpleState {
 }
 
 impl TransitionSystem<SimpleState, GraphEdgeId, MyTime, MyTime> for SimpleWorld {
-    fn actions_from(&self, state: &SimpleState) -> std::slice::Iter<GraphEdgeId> {
-        self.graph.get_edges_out(state.0).iter()
+    fn actions_from(&self, state: &SimpleState) -> Box<dyn Iterator<Item = GraphEdgeId> + '_> {
+        Box::new(self.graph.get_edges_out(state.0).iter().copied())
     }
 
     fn transition(&self, _state: &SimpleState, action: &GraphEdgeId) -> SimpleState {
@@ -102,8 +102,11 @@ impl TransitionSystem<SimpleState, GraphEdgeId, MyTime, MyTime> for SimpleWorld 
         self.time(*action)
     }
 
-    fn reverse_actions_from(&self, state: &SimpleState) -> std::slice::Iter<GraphEdgeId> {
-        self.graph.get_edges_in(state.0).iter()
+    fn reverse_actions_from(
+        &self,
+        state: &SimpleState,
+    ) -> Box<dyn Iterator<Item = GraphEdgeId> + '_> {
+        Box::new(self.graph.get_edges_in(state.0).iter().copied())
     }
 
     fn reverse_transition(&self, _state: &SimpleState, action: &GraphEdgeId) -> SimpleState {

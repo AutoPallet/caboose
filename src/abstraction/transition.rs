@@ -1,4 +1,4 @@
-use std::{ops::Sub, slice};
+use std::ops::Sub;
 
 use tuple::A2;
 
@@ -19,7 +19,7 @@ where
     C: Ord + LimitValues + Sub<C, Output = DC> + Copy,
 {
     /// Returns the actions that can be applied from the given state.
-    fn actions_from(&self, state: &S) -> slice::Iter<A>;
+    fn actions_from(&self, state: &S) -> Box<dyn Iterator<Item = A> + '_>;
 
     /// Returns the state resulting from applying the given action to the given state.
     fn transition(&self, state: &S, action: &A) -> S;
@@ -28,7 +28,7 @@ where
     fn transition_cost(&self, state: &S, action: &A) -> DC;
 
     /// Returns the actions that can be applied to reach the given state.
-    fn reverse_actions_from(&self, state: &S) -> slice::Iter<A>;
+    fn reverse_actions_from(&self, state: &S) -> Box<dyn Iterator<Item = A> + '_>;
 
     /// Returns the state resulting from applying the given reverse action to the given state.
     fn reverse_transition(&self, state: &S, action: &A) -> S;
