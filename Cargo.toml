@@ -8,7 +8,7 @@ readme = "README.md"
 license = "MIT"
 keywords = ["multi-agent", "path-finding", "planning", "robotics"]
 categories = ["algorithms", "science::robotics"]
-exclude = ["resources/*" ]
+exclude = ["resources/*"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 

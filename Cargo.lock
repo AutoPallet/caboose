@@ -32,9 +32,9 @@ checksum = "aae1277d39aeec15cb388266ecc24b11c80469deae6067e17a1a7aa9e5c1f234"
 
 [[package]]
 name = "ahash"
-version = "0.7.7"
+version = "0.7.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5a824f2aa7e75a0c98c5a504fceb80649e9c35265d44525b5f94de4771a395cd"
+checksum = "891477e0c6a8957309ee5c45a6368af3ae14bb510732d2684ffa19af310920f9"
 dependencies = [
  "getrandom 0.2.12",
  "once_cell",
@@ -560,7 +560,7 @@ version = "0.15.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1c8d416a3343cbfc6f4d17bb1cba46b4d7efecb9ee541967763e0b5e04e5fae7"
 dependencies = [
- "ahash 0.7.7",
+ "ahash 0.7.8",
  "epaint",
  "nohash-hasher",
 ]
@@ -595,7 +595,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "16bb4d3b8bbbd132c99d2a5efec8567e8b6d09b742f758ae6cf1e4b104fe0231"
 dependencies = [
  "ab_glyph",
- "ahash 0.7.7",
+ "ahash 0.7.8",
  "atomic_refcell",
  "emath",
  "nohash-hasher",
