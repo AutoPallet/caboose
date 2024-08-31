@@ -153,13 +153,13 @@ where
             for action in self.transition_system.reverse_actions_from(&current.state) {
                 let successor_state = Arc::new(
                     self.transition_system
-                        .reverse_transition(&current.state, action),
+                        .reverse_transition(&current.state, &action),
                 );
 
                 let successor_cost = current.cost
                     + self
                         .transition_system
-                        .reverse_transition_cost(&current.state, action);
+                        .reverse_transition_cost(&current.state, &action);
 
                 let improved = match data.distance.entry(successor_state.clone()) {
                     Occupied(mut e) => {
